@@ -1,22 +1,71 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Responsive Checker - инструмент для тестирования адаптивного дизайна">
+  <meta name="description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
   <meta name="keywords" content="responsive, design, testing, web development">
   <meta name="author" content="Responsive Checker">
-  <meta name="theme-color" content="#007bff">
+  <meta name="theme-color" content="#080b12">
 
-  <title>Resize Checker</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+  <title>Resize Checker — проверка адаптивного дизайна</title>
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://resize-checker.d9911.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Resize Checker — проверка адаптивного дизайна">
+  <meta property="og:description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
+  <meta property="og:url" content="https://resize-checker.d9911.org/">
+  <meta property="og:image" content="https://resize-checker.d9911.org/icons/icon-512.png">
+  <meta property="og:image:alt" content="Resize Checker logo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Resize Checker — проверка адаптивного дизайна">
+  <meta name="twitter:description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
+  <meta name="twitter:image" content="https://resize-checker.d9911.org/icons/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Resize Checker",
+      "url": "https://resize-checker.d9911.org/",
+      "description": "Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "inLanguage": "ru",
+      "isAccessibleForFree": true
+    }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#preview-container" data-i18n="skip">Перейти к предпросмотру</a>
   <div class="container">
-    <header class="control-panel">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">d9911 tools</p>
+        <h1 data-i18n="title">Resize Checker</h1>
+        <p class="subtitle" data-i18n="subtitle">Проверяйте адаптивность страницы на разных размерах экрана.</p>
+      </div>
+      <div class="app-controls" aria-label="Настройки отображения" data-i18n-aria="displaySettings">
+        <label class="sr-only" for="language-select" data-i18n="language">Язык</label>
+        <select id="language-select" class="control-button" aria-label="Язык" data-i18n-aria="language">
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        <button id="theme-toggle" class="control-button" type="button" aria-label="Включить светлую тему">☀️</button>
+      </div>
+    </header>
+
+    <section class="control-panel" aria-labelledby="controls-title">
+      <h2 id="controls-title" class="sr-only" data-i18n="controls">Настройки предпросмотра</h2>
       <div class="field">
-        <label for="breakpoint-select">Готовые брейкпоинты:</label>
-        <select id="breakpoint-select" aria-label="Выберите размер экрана">
+        <label for="breakpoint-select" data-i18n="breakpoints">Готовые брейкпоинты:</label>
+        <select id="breakpoint-select" aria-label="Выберите размер экрана" data-i18n-aria="breakpointSelect">
           <option value="320">320px (Mobile S)</option>
           <option value="375">375px (Mobile M)</option>
           <option value="425">425px (Mobile L)</option>
@@ -27,41 +76,50 @@
       </div>
 
       <div class="field">
-        <label for="custom-breakpoint">Пользовательский размер (px):</label>
+        <label for="custom-breakpoint" data-i18n="customWidth">Пользовательский размер (px):</label>
         <input
           type="number"
           id="custom-breakpoint"
           placeholder="например: 900"
+          data-i18n-placeholder="customPlaceholder"
           min="100"
           max="3000"
           step="1"
           aria-label="Введите пользовательскую ширину в пикселях"
+          data-i18n-aria="customWidthAria"
         >
       </div>
 
       <div class="field full">
-        <label for="input-source">URL или HTML код:</label>
+        <label for="input-source" data-i18n="source">URL или HTML-код:</label>
         <textarea
           id="input-source"
-          placeholder="Вставьте URL или HTML код для тестирования..."
+          placeholder="Вставьте URL или HTML-код для тестирования..."
+          data-i18n-placeholder="sourcePlaceholder"
           rows="4"
-          aria-label="Поле для ввода URL или HTML кода"
+          aria-label="Поле для ввода URL или HTML-кода"
+          data-i18n-aria="sourceAria"
         ></textarea>
       </div>
 
-      <button id="go-button" type="button" aria-label="Загрузить контент">
-        Go
+      <button id="go-button" type="button" aria-label="Загрузить контент" data-i18n="load" data-i18n-aria="loadAria">
+        Загрузить
       </button>
-    </header>
+    </section>
 
-    <main class="preview-container">
+    <main class="preview-container" id="preview-container">
       <iframe
         id="preview-frame"
-        sandbox="allow-same-origin allow-scripts allow-forms"
+        sandbox="allow-scripts allow-forms"
         title="Предпросмотр контента"
+        data-i18n-title="previewTitle"
         loading="lazy"
       ></iframe>
     </main>
+    <footer class="app-footer">
+      <span data-i18n="footer">Локальный инструмент для проверки адаптивной вёрстки.</span>
+      <a href="https://d9911.org/">d9911.org</a>
+    </footer>
   </div>
 
   <script type="module" src="main.ts"></script>

@@ -1,23 +1,72 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Responsive Checker - инструмент для тестирования адаптивного дизайна">
+  <meta name="description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
   <meta name="keywords" content="responsive, design, testing, web development">
   <meta name="author" content="Responsive Checker">
-  <meta name="theme-color" content="#007bff">
+  <meta name="theme-color" content="#080b12">
 
-  <title>Resize Checker</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
-<style>@keyframes slideIn{0%{transform:translate(100%);opacity:0}to{transform:translate(0);opacity:1}}@keyframes slideOut{0%{transform:translate(0);opacity:1}to{transform:translate(100%);opacity:0}}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}body{margin:0;padding:20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#f4f4f4;animation:fadeIn .5s ease}.container{max-width:1200px;margin:0 auto}.control-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 20px #00000014;align-items:end;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}.control-panel .field{display:flex;flex-direction:column}.control-panel .field label{font-weight:600;margin-bottom:.5rem;color:#333;font-size:.9rem}.control-panel .field input,.control-panel .field select,.control-panel .field textarea{padding:.75rem;border:2px solid #e1e5e9;border-radius:8px;font-size:1rem;width:100%;box-sizing:border-box;transition:all .2s ease;background:#fafbfc}.control-panel .field input:focus,.control-panel .field select:focus,.control-panel .field textarea:focus{outline:none;border-color:#007bff;background:#fff;box-shadow:0 0 0 3px #007bff1a}.control-panel .field input:hover,.control-panel .field select:hover,.control-panel .field textarea:hover{border-color:#cbd5e0}.control-panel .field.full{grid-column:span 2}.control-panel button{padding:.875rem 1.75rem;background:#007bff;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:600;transition:all .2s ease;box-shadow:0 2px 8px #007bff4d}.control-panel button:hover{background:#0062cc;transform:translateY(-2px);box-shadow:0 4px 12px #007bff66}.control-panel button:active{transform:translateY(0);box-shadow:0 2px 8px #007bff4d}.control-panel button:disabled{background:#6c757d;cursor:not-allowed;transform:none;box-shadow:none}.preview-container{margin-top:1.5rem;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 20px #00000014;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}.preview-container iframe{width:100%;height:600px;border:2px solid #e1e5e9;border-radius:8px;transition:all .3s ease;display:block;margin:0 auto;background:#fff}.preview-container iframe:hover{border-color:#007bff;box-shadow:0 4px 20px #0000001a}@media (max-width: 768px){body{padding:10px}.control-panel{grid-template-columns:1fr;gap:.75rem;padding:1rem}.control-panel .field.full{grid-column:span 1}.preview-container{padding:1rem}.preview-container iframe{height:400px}}
+  <title>Resize Checker — проверка адаптивного дизайна</title>
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://resize-checker.d9911.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Resize Checker — проверка адаптивного дизайна">
+  <meta property="og:description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
+  <meta property="og:url" content="https://resize-checker.d9911.org/">
+  <meta property="og:image" content="https://resize-checker.d9911.org/icons/icon-512.png">
+  <meta property="og:image:alt" content="Resize Checker logo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Resize Checker — проверка адаптивного дизайна">
+  <meta name="twitter:description" content="Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.">
+  <meta name="twitter:image" content="https://resize-checker.d9911.org/icons/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Resize Checker",
+      "url": "https://resize-checker.d9911.org/",
+      "description": "Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "inLanguage": "ru",
+      "isAccessibleForFree": true
+    }
+  </script>
+<style>@keyframes slideIn{0%{transform:translate(100%);opacity:0}to{transform:translate(0);opacity:1}}@keyframes slideOut{0%{transform:translate(0);opacity:1}to{transform:translate(100%);opacity:0}}body{margin:0;padding:20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#f4f4f4}.container{max-width:1200px;margin:0 auto}.control-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 20px #00000014;align-items:end;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}.control-panel .field{display:flex;flex-direction:column}.control-panel .field label{font-weight:600;margin-bottom:.5rem;color:#333;font-size:.9rem}.control-panel .field input,.control-panel .field select,.control-panel .field textarea{padding:.75rem;border:2px solid #e1e5e9;border-radius:8px;font-size:1rem;width:100%;box-sizing:border-box;transition:all .2s ease;background:#fafbfc}.control-panel .field input:focus,.control-panel .field select:focus,.control-panel .field textarea:focus{outline:none;border-color:#007bff;background:#fff;box-shadow:0 0 0 3px #007bff1a}.control-panel .field input:hover,.control-panel .field select:hover,.control-panel .field textarea:hover{border-color:#cbd5e0}.control-panel .field.full{grid-column:span 2}.control-panel button{padding:.875rem 1.75rem;background:#007bff;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:600;transition:all .2s ease;box-shadow:0 2px 8px #007bff4d}.control-panel button:hover{background:#0062cc;transform:translateY(-2px);box-shadow:0 4px 12px #007bff66}.control-panel button:active{transform:translateY(0);box-shadow:0 2px 8px #007bff4d}.control-panel button:disabled{background:#6c757d;cursor:not-allowed;transform:none;box-shadow:none}.preview-container{margin-top:1.5rem;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 20px #00000014;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}.preview-container iframe{width:100%;height:600px;border:2px solid #e1e5e9;border-radius:8px;transition:all .3s ease;display:block;margin:0 auto;background:#fff}.preview-container iframe:hover{border-color:#007bff;box-shadow:0 4px 20px #0000001a}@media (max-width: 768px){body{padding:10px}.control-panel{grid-template-columns:1fr;gap:.75rem;padding:1rem}.control-panel .field.full{grid-column:span 1}.preview-container{padding:1rem}.preview-container iframe{height:400px}}html{background-color:#080b12;color-scheme:dark;scrollbar-gutter:stable}body{min-height:100vh;background-color:#080b12;accent-color:#90caf9}::selection{background:#90caf947;color:#fff}:where(a,button,input,textarea,select,summary,[tabindex]):focus-visible{outline:3px solid #90caf9;outline-offset:3px}*{scrollbar-width:thin;scrollbar-color:#90caf9 #111722}*::-webkit-scrollbar-track,*::-webkit-scrollbar-corner{background:#111722}*::-webkit-scrollbar-thumb{min-width:36px;min-height:36px;border:2px solid #111722;border-radius:999px;background:linear-gradient(180deg,#90caf9,#ce93d8);background-clip:padding-box}*::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#73e8f2,#c6a0ff);background-clip:padding-box}@media (prefers-reduced-motion: reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}:root{--ui-bg: #eef6ff;--ui-bg-accent: #fff3e2;--ui-surface: rgba(255, 255, 255, .88);--ui-surface-solid: #ffffff;--ui-text: #182235;--ui-muted: #5c6879;--ui-border: #c8d8e8;--ui-accent: #2563a8;--ui-accent-strong: #174c87;--ui-focus: #1268b3;--ui-track: #dce8f2;--ui-shadow: 0 24px 60px -38px rgba(35, 72, 110, .45);color-scheme:light;background:var(--ui-bg);scrollbar-gutter:stable}:root[data-theme=dark]{--ui-bg: #080b12;--ui-bg-accent: #132f4c;--ui-surface: rgba(17, 23, 34, .92);--ui-surface-solid: #111722;--ui-text: #e7edf7;--ui-muted: #aeb9c9;--ui-border: #2d3a4f;--ui-accent: #90caf9;--ui-accent-strong: #3178b8;--ui-focus: #90caf9;--ui-track: #111722;--ui-shadow: 0 28px 65px -36px rgba(0, 0, 0, .82);color-scheme:dark}body{min-height:100vh;color:var(--ui-text);background:radial-gradient(circle at 15% 0%,color-mix(in srgb,var(--ui-bg-accent) 54%,transparent),transparent 44%),var(--ui-bg);accent-color:var(--ui-accent)}.container{display:grid;gap:1.25rem}.app-header,.control-panel,.preview-container,.app-footer{border:1px solid var(--ui-border);background:var(--ui-surface);color:var(--ui-text);box-shadow:var(--ui-shadow);backdrop-filter:blur(16px)}.app-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;border-radius:18px}.app-header h1{margin:0;font-size:clamp(1.7rem,4vw,2.4rem)}.eyebrow{margin:0 0 .25rem;color:var(--ui-accent);font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.subtitle{margin:.35rem 0 0;color:var(--ui-muted)}.app-controls{display:flex;gap:.6rem}.control-button{min-width:46px;min-height:44px;padding:.65rem .8rem;border:1px solid var(--ui-border);border-radius:12px;background:var(--ui-surface-solid);color:var(--ui-text);cursor:pointer;font:inherit;font-weight:700}.control-panel .field label{color:var(--ui-text)}.control-panel .field input,.control-panel .field select,.control-panel .field textarea{border-color:var(--ui-border);background:var(--ui-surface-solid);color:var(--ui-text)}.control-panel .field input::placeholder,.control-panel .field textarea::placeholder{color:var(--ui-muted);opacity:1}.control-panel .field input:focus,.control-panel .field select:focus,.control-panel .field textarea:focus{border-color:var(--ui-focus);background:var(--ui-surface-solid);box-shadow:0 0 0 3px color-mix(in srgb,var(--ui-focus) 25%,transparent)}.control-panel button{background:linear-gradient(135deg,var(--ui-accent-strong),#694792)}.preview-container{margin-top:0}.preview-container iframe{border-color:var(--ui-border);background:#fff}.app-footer{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;border-radius:16px;color:var(--ui-muted)}.app-footer a{color:var(--ui-accent);font-weight:700}.skip-link{position:fixed;z-index:1001;top:.75rem;left:.75rem;padding:.7rem 1rem;border-radius:10px;background:var(--ui-surface-solid);color:var(--ui-text);transform:translateY(-180%)}.skip-link:focus{transform:translateY(0)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:where(a,button,input,textarea,select):focus-visible{outline:3px solid var(--ui-focus);outline-offset:3px}*{scrollbar-width:thin;scrollbar-color:var(--ui-accent) var(--ui-track)}*::-webkit-scrollbar{width:10px;height:10px}*::-webkit-scrollbar-track,*::-webkit-scrollbar-corner{background:var(--ui-track)}*::-webkit-scrollbar-thumb{border:2px solid var(--ui-track);border-radius:999px;background:linear-gradient(180deg,var(--ui-accent),#ce93d8);background-clip:padding-box}@media (max-width: 680px){.app-header,.app-footer{align-items:flex-start;flex-direction:column}.app-controls{align-self:stretch;justify-content:flex-end}}@media (prefers-reduced-motion: reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style></head>
 <body>
+  <a class="skip-link" href="#preview-container" data-i18n="skip">Перейти к предпросмотру</a>
   <div class="container">
-    <header class="control-panel">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">d9911 tools</p>
+        <h1 data-i18n="title">Resize Checker</h1>
+        <p class="subtitle" data-i18n="subtitle">Проверяйте адаптивность страницы на разных размерах экрана.</p>
+      </div>
+      <div class="app-controls" aria-label="Настройки отображения" data-i18n-aria="displaySettings">
+        <label class="sr-only" for="language-select" data-i18n="language">Язык</label>
+        <select id="language-select" class="control-button" aria-label="Язык" data-i18n-aria="language">
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        <button id="theme-toggle" class="control-button" type="button" aria-label="Включить светлую тему">☀️</button>
+      </div>
+    </header>
+
+    <section class="control-panel" aria-labelledby="controls-title">
+      <h2 id="controls-title" class="sr-only" data-i18n="controls">Настройки предпросмотра</h2>
       <div class="field">
-        <label for="breakpoint-select">Готовые брейкпоинты:</label>
-        <select id="breakpoint-select" aria-label="Выберите размер экрана">
+        <label for="breakpoint-select" data-i18n="breakpoints">Готовые брейкпоинты:</label>
+        <select id="breakpoint-select" aria-label="Выберите размер экрана" data-i18n-aria="breakpointSelect">
           <option value="320">320px (Mobile S)</option>
           <option value="375">375px (Mobile M)</option>
           <option value="425">425px (Mobile L)</option>
@@ -28,43 +77,65 @@
       </div>
 
       <div class="field">
-        <label for="custom-breakpoint">Пользовательский размер (px):</label>
+        <label for="custom-breakpoint" data-i18n="customWidth">Пользовательский размер (px):</label>
         <input
           type="number"
           id="custom-breakpoint"
           placeholder="например: 900"
+          data-i18n-placeholder="customPlaceholder"
           min="100"
           max="3000"
           step="1"
           aria-label="Введите пользовательскую ширину в пикселях"
+          data-i18n-aria="customWidthAria"
         >
       </div>
 
       <div class="field full">
-        <label for="input-source">URL или HTML код:</label>
+        <label for="input-source" data-i18n="source">URL или HTML-код:</label>
         <textarea
           id="input-source"
-          placeholder="Вставьте URL или HTML код для тестирования..."
+          placeholder="Вставьте URL или HTML-код для тестирования..."
+          data-i18n-placeholder="sourcePlaceholder"
           rows="4"
-          aria-label="Поле для ввода URL или HTML кода"
+          aria-label="Поле для ввода URL или HTML-кода"
+          data-i18n-aria="sourceAria"
         ></textarea>
       </div>
 
-      <button id="go-button" type="button" aria-label="Загрузить контент">
-        Go
+      <button id="go-button" type="button" aria-label="Загрузить контент" data-i18n="load" data-i18n-aria="loadAria">
+        Загрузить
       </button>
-    </header>
+    </section>
 
-    <main class="preview-container">
+    <main class="preview-container" id="preview-container">
       <iframe
         id="preview-frame"
-        sandbox="allow-same-origin allow-scripts allow-forms"
+        sandbox="allow-scripts allow-forms"
         title="Предпросмотр контента"
+        data-i18n-title="previewTitle"
         loading="lazy"
       ></iframe>
     </main>
+    <footer class="app-footer">
+      <span data-i18n="footer">Локальный инструмент для проверки адаптивной вёрстки.</span>
+      <a href="https://d9911.org/">d9911.org</a>
+    </footer>
   </div>
 
-  <script type="module" src="main.ts"></script>
+  <script>var p=(r,e,t)=>new Promise((i,o)=>{var a=n=>{try{u(t.next(n))}catch(h){o(h)}},c=n=>{try{u(t.throw(n))}catch(h){o(h)}},u=n=>n.done?i(n.value):Promise.resolve(n.value).then(a,c);u((t=t.apply(r,e)).next())});(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const a of o)if(a.type==="childList")for(const c of a.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&i(c)}).observe(document,{childList:!0,subtree:!0});function t(o){const a={};return o.integrity&&(a.integrity=o.integrity),o.referrerPolicy&&(a.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?a.credentials="include":o.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(o){if(o.ep)return;o.ep=!0;const a=t(o);fetch(o.href,a)}})();const f={ru:{pageTitle:"Resize Checker — проверка адаптивного дизайна",description:"Проверяйте веб-страницы и HTML на популярных и пользовательских размерах экрана.",skip:"Перейти к предпросмотру",title:"Resize Checker",subtitle:"Проверяйте адаптивность страницы на разных размерах экрана.",displaySettings:"Настройки отображения",language:"Язык",controls:"Настройки предпросмотра",breakpoints:"Готовые брейкпоинты:",breakpointSelect:"Выберите размер экрана",customWidth:"Пользовательский размер (px):",customPlaceholder:"например: 900",customWidthAria:"Введите пользовательскую ширину в пикселях",source:"URL или HTML-код:",sourcePlaceholder:"Вставьте URL или HTML-код для тестирования...",sourceAria:"Поле для ввода URL или HTML-кода",load:"Загрузить",loading:"Загрузка…",loadAria:"Загрузить контент",previewTitle:"Предпросмотр контента",footer:"Локальный инструмент для проверки адаптивной вёрстки.",enterSource:"Введите URL или HTML",loadError:"Ошибка загрузки",lightTheme:"Включить светлую тему",darkTheme:"Включить тёмную тему"},en:{pageTitle:"Resize Checker — responsive design preview",description:"Preview web pages and HTML at popular and custom viewport widths.",skip:"Skip to preview",title:"Resize Checker",subtitle:"Check responsive layouts at different viewport widths.",displaySettings:"Display settings",language:"Language",controls:"Preview settings",breakpoints:"Preset breakpoints:",breakpointSelect:"Choose a viewport width",customWidth:"Custom width (px):",customPlaceholder:"for example: 900",customWidthAria:"Enter a custom width in pixels",source:"URL or HTML:",sourcePlaceholder:"Paste a URL or HTML to preview...",sourceAria:"URL or HTML input",load:"Load",loading:"Loading…",loadAria:"Load content",previewTitle:"Content preview",footer:"A local tool for checking responsive layouts.",enterSource:"Enter a URL or HTML",loadError:"Loading error",lightTheme:"Use light theme",darkTheme:"Use dark theme"},es:{pageTitle:"Resize Checker — vista previa adaptable",description:"Previsualiza páginas web y HTML en anchos de pantalla populares y personalizados.",skip:"Ir a la vista previa",title:"Resize Checker",subtitle:"Comprueba diseños adaptables en diferentes anchos de pantalla.",displaySettings:"Ajustes de visualización",language:"Idioma",controls:"Ajustes de vista previa",breakpoints:"Puntos de ruptura:",breakpointSelect:"Elige un ancho de pantalla",customWidth:"Ancho personalizado (px):",customPlaceholder:"por ejemplo: 900",customWidthAria:"Introduce un ancho personalizado en píxeles",source:"URL o HTML:",sourcePlaceholder:"Pega una URL o HTML para previsualizar...",sourceAria:"Campo de URL o HTML",load:"Cargar",loading:"Cargando…",loadAria:"Cargar contenido",previewTitle:"Vista previa del contenido",footer:"Una herramienta local para comprobar diseños adaptables.",enterSource:"Introduce una URL o HTML",loadError:"Error de carga",lightTheme:"Usar tema claro",darkTheme:"Usar tema oscuro"}};let d="ru";const s=r=>f[d][r];function y(){const r=new URLSearchParams(window.location.search).get("lang");if(r==="ru"||r==="en"||r==="es")return r;const e=localStorage.getItem("resizeCheckerLanguage");if(e==="ru"||e==="en"||e==="es")return e;const t=navigator.language.toLowerCase();return t.startsWith("ru")?"ru":t.startsWith("es")?"es":"en"}function g(r){var e;d=r,localStorage.setItem("resizeCheckerLanguage",r),document.documentElement.lang=r,document.title=s("pageTitle"),(e=document.querySelector('meta[name="description"]'))==null||e.setAttribute("content",s("description")),document.querySelectorAll("[data-i18n]").forEach(t=>{const i=t.dataset.i18n;i&&(t.textContent=s(i))}),document.querySelectorAll("[data-i18n-placeholder]").forEach(t=>{const i=t.dataset.i18nPlaceholder;i&&(t.placeholder=s(i))}),document.querySelectorAll("[data-i18n-aria]").forEach(t=>{const i=t.dataset.i18nAria;i&&t.setAttribute("aria-label",s(i))}),document.querySelectorAll("[data-i18n-title]").forEach(t=>{const i=t.dataset.i18nTitle;i&&t.setAttribute("title",s(i))})}function m(r){var t;document.documentElement.dataset.theme=r,document.documentElement.style.colorScheme=r,localStorage.setItem("resizeCheckerTheme",r),(t=document.querySelector('meta[name="theme-color"]'))==null||t.setAttribute("content",r==="dark"?"#080b12":"#eef6ff");const e=document.querySelector("#theme-toggle");e&&(e.textContent=r==="dark"?"☀️":"🌙",e.setAttribute("aria-label",s(r==="dark"?"lightTheme":"darkTheme")))}const l={defaultWidth:768,iframeSelector:"#preview-frame",selectSelector:"#breakpoint-select",customInputSelector:"#custom-breakpoint",sourceInputSelector:"#input-source",goButtonSelector:"#go-button"};class L{constructor(){this.initializeElements(),this.bindEvents(),this.initializeApp()}initializeElements(){if(this.iframe=document.querySelector(l.iframeSelector),this.select=document.querySelector(l.selectSelector),this.customInput=document.querySelector(l.customInputSelector),this.sourceInput=document.querySelector(l.sourceInputSelector),this.goBtn=document.querySelector(l.goButtonSelector),!this.iframe||!this.select||!this.customInput||!this.sourceInput||!this.goBtn)throw new Error("Required DOM elements not found")}bindEvents(){this.select.addEventListener("change",()=>this.setWidth(Number(this.select.value))),this.customInput.addEventListener("input",()=>{const e=parseInt(this.customInput.value);e>0&&this.setWidth(e)}),this.goBtn.addEventListener("click",()=>this.loadContent()),this.sourceInput.addEventListener("keydown",e=>{e.key==="Enter"&&(e.ctrlKey||e.metaKey)&&this.loadContent()})}initializeApp(){this.setWidth(Number(this.select.value)||l.defaultWidth)}setWidth(e){e<=0||(this.iframe.style.width=`${e}px`,this.iframe.style.transition="width 0.3s ease")}loadContent(){return p(this,null,function*(){const e=this.sourceInput.value.trim();if(!e){this.showError(s("enterSource"));return}try{this.goBtn.disabled=!0,this.goBtn.textContent=s("loading"),this.isUrl(e)?yield this.loadUrl(e):this.loadHtml(e)}catch(t){this.showError(`${s("loadError")}: ${t instanceof Error?t.message:""}`)}finally{this.goBtn.disabled=!1,this.goBtn.textContent=s("load")}})}isUrl(e){try{return new URL(e),!0}catch(t){return!1}}loadUrl(e){return p(this,null,function*(){this.iframe.src=e})}loadHtml(e){this.iframe.srcdoc=e}showError(e){const t=document.createElement("div");t.style.cssText=`
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4444;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      max-width: 300px;
+      animation: slideIn 0.3s ease;
+    `,t.textContent=e,t.setAttribute("role","alert"),document.body.appendChild(t),setTimeout(()=>{t.style.animation="slideOut 0.3s ease",setTimeout(()=>t.remove(),300)},3e3)}}document.addEventListener("DOMContentLoaded",()=>{var r;try{d=y(),g(d);const e=document.querySelector("#language-select");e&&(e.value=d,e.addEventListener("change",()=>{g(e.value),m(document.documentElement.dataset.theme==="light"?"light":"dark")}));const t=localStorage.getItem("resizeCheckerTheme")==="light"?"light":"dark";m(t),(r=document.querySelector("#theme-toggle"))==null||r.addEventListener("click",()=>{m(document.documentElement.dataset.theme==="dark"?"light":"dark")}),new L}catch(e){console.error("Ошибка инициализации приложения:",e)}});
+</script>
 </body>
 </html>

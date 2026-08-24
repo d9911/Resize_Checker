@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Resize Checker</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#182132" />
+      <stop offset="1" stop-color="#080b12" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#73e8f2" />
+      <stop offset="1" stop-color="#c6a0ff" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <rect x="142" y="68" width="228" height="376" rx="48" fill="#111722" stroke="url(#accent)" stroke-width="18" />
+  <path d="M208 110h96M236 398h40" stroke="#90caf9" stroke-width="16" stroke-linecap="round" />
+  <path d="M184 212h144M184 260h96M184 308h120" stroke="#aeb8c8" stroke-width="16" stroke-linecap="round" />
+</svg>
