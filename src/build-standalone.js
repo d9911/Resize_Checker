@@ -14,7 +14,9 @@ const js = fs.readFileSync(path.join(__dirname, '../dist/index.js'), 'utf8');
 // Создаем standalone HTML
 const standaloneHTML = html
   .replace('</head>', `<style>${css}</style></head>`)
-  .replace(/<script\s+type="module"\s+src="(?:\/src\/)?main\.ts"><\/script>/, `<script>${js}</script>`);
+  .replace(/<script\s+type="module"\s+src="(?:\/src\/)?main\.ts"><\/script>/, `<script>${js}</script>`)
+  .replaceAll('href="/icons/', 'href="public/icons/')
+  .replace('href="/manifest.webmanifest"', 'href="public/manifest.webmanifest"');
 
 // Сохраняем результат
 fs.writeFileSync(path.join(__dirname, '../index.html'), standaloneHTML);

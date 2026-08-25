@@ -46,3 +46,4 @@ dist
 build
 /package-lock.json
 package-lock.json
+yarn.lock
