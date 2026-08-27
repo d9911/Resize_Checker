@@ -1,180 +1,60 @@
+English | [Español](README.es.md) | [Русский](README.ru.md)
+
 # Resize Checker
 
+## Purpose
 
-Инструмент для тестирования адаптивного дизайна. Проверяйте, как ваши веб-страницы выглядят на разных размерах экранов.
+Resize Checker previews a URL or supplied HTML at selected viewport widths for responsive-layout checks.
 
-## ✨ Особенности
+## Web address
 
-- 🎯 **Быстрое тестирование** - мгновенный предпросмотр на разных размерах экранов
-- 📱 **Готовые брейкпоинты** - популярные размеры экранов (320px, 375px, 425px, 768px, 1024px, 1440px)
-- 🎨 **Пользовательские размеры** - возможность задать любой размер экрана
-- 🌐 **URL и HTML** - поддержка как внешних ссылок, так и HTML кода
-- ⚡ **Современный стек** - TypeScript, Sass, Vite
-- 📱 **Адаптивный дизайн** - отлично работает на всех устройствах
-- 🎭 **Красивый UI** - современный дизайн с анимациями
-- 📦 **Standalone версия** - один HTML файл для локального использования
+<https://resize-checker.d9911.org/>
 
-## 🚀 Быстрый старт
+## Verified capabilities
 
-### Установка зависимостей
+- Select preset widths of 320, 375, 425, 768, 1024, or 1440 pixels, or enter a custom positive width; the custom input exposes 100–3000 as its UI range.
+- Paste a URL or HTML. URLs are assigned to the preview iframe; supplied HTML is assigned with `srcdoc`.
+- Load content with the button or with Ctrl/Cmd+Enter in the input.
+- Use a lazy-loaded preview iframe with `allow-scripts allow-forms` sandbox tokens.
+- Switch the interface between Russian, English, and Spanish, and save the selected language and theme in browser `localStorage`.
+- Include a web manifest and app icons. No service-worker registration is tracked in the repository, so this README makes no offline or installation claim.
+
+## Usage
+
+1. Choose a preset viewport width or enter a custom width.
+2. Paste a URL or HTML into the source field.
+3. Select **Load** or press Ctrl/Cmd+Enter to update the preview.
+
+## Local development and build
+
+`package.json` defines the following scripts; no successful installation or build is asserted here:
+
 ```bash
-yarn install
+npm run dev               # Vite development server (configured for port 3000)
+npm run build             # clean, TypeScript compilation, and Sass compilation
+npm run build:standalone  # Vite production build
+npm run build:single      # Vite build, then src/build-standalone.js
+npm run preview           # Vite preview
+npm run lint              # ESLint for src/**/*.ts
 ```
 
-### Разработка
-```bash
-# Запуск в режиме разработки с Vite
-yarn dev
+The repository tracks both `package-lock.json` and `yarn.lock`, but `package.json` has no `packageManager` field. The lockfiles are not equivalent: the package lock records, for example, Vite `^6.3.5` and TypeScript `^5.1.3`, while `package.json` declares Vite `^8.2.2` and TypeScript `^6.0.3`, and the Yarn lock has entries for the latter ranges. Select and reconcile a package-manager/lockfile policy before treating an install as reproducible; do not mix the lockfiles.
 
-# Или режим разработки с автоматической пересборкой
-yarn watch
-```
+## Structure
 
-### Сборка для продакшена
-```bash
-# Обычная сборка (разделенные файлы)
-yarn build
+- `src/index.html` is the Vite entry document; `src/main.ts` imports the styles and application logic in `src/index.ts`.
+- `src/styles.scss` and `src/d9911-theme.css` define the styles.
+- `vite.config.ts` sets `src` as the Vite root, exposes `public/`, and writes builds to `dist/`.
+- `public/` contains the manifest and icons; `src/build-standalone.js` embeds Vite output into the root `index.html` for the `build:single` script.
 
-# Сборка с Vite (оптимизированная)
-yarn build:standalone
+## Technologies and runtime dependencies
 
-# Создать standalone HTML файл (все в одном файле)
-yarn build:single
-```
+The app uses browser HTML, CSS, JavaScript, iframe, `localStorage`, and Web App Manifest APIs. The project configuration uses TypeScript, Sass, Vite, ESLint, and Prettier; `package.json` also declares `fs` 0.0.2 as a dependency. The application has no registered service worker in the tracked source.
 
-## 🛠️ Доступные команды
+## License
 
-- `yarn build` - обычная сборка проекта
-- `yarn build:standalone` - сборка с Vite (оптимизированная)
-- `yarn build:single` - создать standalone HTML файл
-- `yarn dev` - запуск сервера разработки с Vite
-- `yarn watch` - режим разработки с автоматической пересборкой
-- `yarn preview` - предпросмотр собранного проекта
-- `yarn clean` - очистка папки dist
-- `yarn lint` - проверка кода с ESLint
-- `yarn lint:fix` - автоматическое исправление ошибок линтинга
-- `yarn format` - форматирование кода с Prettier
+For documentation, the repository [LICENSE](LICENSE) file is authoritative: it contains GPLv3 text and additional project-specific terms. `package.json` also contains a `MIT` license field; this README does not interpret or reconcile that conflict.
 
-## 📁 Структура проекта
+## Author
 
-```
-├── index.html              # Главная страница для Vite
-├── src/
-│   ├── index.html          # Исходная HTML страница
-│   ├── index.ts            # Основная логика приложения
-│   ├── main.ts             # Entry point для Vite
-│   └── styles.scss         # Стили (SCSS)
-├── dist/                   # Собранные файлы
-├── resize-checker.html     # Standalone HTML файл (8.25 KB)
-├── vite.config.ts          # Конфигурация Vite
-└── build-standalone.js     # Скрипт для создания standalone файла
-```
-
-## 🎨 Использование
-
-### Standalone версия (рекомендуется)
-1. **Создайте standalone файл:**
-   ```bash
-   yarn build:single
-   ```
-2. **Откройте** `resize-checker.html` в любом браузере
-3. **Используйте** - никаких серверов не нужно!
-
-### Обычная версия
-1. **Соберите проект:**
-   ```bash
-   yarn build:standalone
-   ```
-2. **Запустите сервер:**
-   ```bash
-   yarn preview
-   ```
-
-### Как использовать приложение
-1. **Выберите размер экрана** из выпадающего списка или введите пользовательский размер
-2. **Вставьте URL** или **HTML код** в текстовое поле
-3. **Нажмите "Go"** для загрузки контента
-4. **Наблюдайте** как контент отображается в выбранном размере
-
-### Горячие клавиши
-- `Ctrl/Cmd + Enter` в поле HTML - быстрая загрузка контента
-
-## 🔧 Технические улучшения
-
-### Производительность
-- ✅ Сжатие CSS в продакшене
-- ✅ Оптимизированные TypeScript настройки
-- ✅ Современные ES модули
-- ✅ Ленивая загрузка iframe
-- ✅ Vite для быстрой сборки
-- ✅ Standalone HTML файл (8.25 KB)
-
-### Качество кода
-- ✅ Строгая типизация TypeScript
-- ✅ ESLint для проверки кода
-- ✅ Prettier для форматирования
-- ✅ Современные Sass функции
-
-### UX/UI
-- ✅ Современный дизайн с анимациями
-- ✅ Адаптивная верстка
-- ✅ Улучшенная доступность (ARIA)
-- ✅ Красивые уведомления об ошибках
-- ✅ Состояния загрузки
-
-### Безопасность
-- ✅ Sandbox для iframe
-- ✅ Валидация входных данных
-- ✅ Обработка ошибок
-
-## 📦 Standalone версия
-
-### Преимущества
-- 🚀 **Минимальный размер** - всего 8.25 KB
-- 🔌 **Автономность** - работает без сервера
-- 📱 **Портативность** - один файл для всех платформ
-- ⚡ **Быстрый запуск** - просто откройте в браузере
-
-### Создание standalone файла
-```bash
-# Быстрый способ
-yarn build:single
-
-# Пошагово:
-yarn build:standalone  # Собрать с Vite
-node build-standalone.js  # Объединить в один файл
-```
-
-### Использование
-1. Запустите `yarn build:single`
-2. Откройте `resize-checker.html` в браузере
-3. Готово! Никаких дополнительных настроек не нужно
-
-## 🎯 Брейкпоинты
-
-- **320px** - Mobile S (iPhone SE)
-- **375px** - Mobile M (iPhone 12/13/14)
-- **425px** - Mobile L (iPhone 12/13/14 Pro Max)
-- **768px** - Tablet (iPad)
-- **1024px** - Desktop (ноутбуки)
-- **1440px** - Large Desktop (большие мониторы)
-
-## 📝 Лицензия
-
-MIT License - используйте свободно для любых целей.
-
-## 🤝 Вклад в проект
-
-1. Форкните репозиторий
-2. Создайте ветку для новой функции
-3. Внесите изменения
-4. Запустите `yarn lint` и `yarn format`
-5. Создайте Pull Request
-
----
-
-**Создано с ❤️ для веб-разработчиков**
-
-
-## Лицензия
-Этот проект лицензирован по GPL-3.0 — см. файл [LICENSE](LICENSE) для деталей.
+The repository copyright notice identifies Denis Gutsuliak (`d9911.org`), 2024–2025.
