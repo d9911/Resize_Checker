@@ -50,7 +50,7 @@
         <h1 data-i18n="title">Resize Checker</h1>
         <p class="subtitle" data-i18n="subtitle">Проверяйте адаптивность страницы на разных размерах экрана.</p>
       </div>
-      <div class="app-controls" aria-label="Настройки отображения" data-i18n-aria="displaySettings">
+      <div class="app-controls" role="group" aria-label="Настройки отображения" data-i18n-aria="displaySettings">
         <label class="sr-only" for="language-select" data-i18n="language">Язык</label>
         <select id="language-select" class="native-language-select" aria-label="Язык" data-i18n-aria="language" tabindex="-1">
           <option value="ru">RU</option>
@@ -72,6 +72,7 @@
       </div>
     </header>
 
+    <main id="main-content">
     <section class="control-panel" aria-labelledby="controls-title">
       <h2 id="controls-title" class="sr-only" data-i18n="controls">Настройки предпросмотра</h2>
       <div class="field">
@@ -118,8 +119,9 @@
       </button>
     </section>
 
-    <main class="preview-container" id="preview-container">
-      <div class="preview-viewport" tabindex="0" aria-label="Прокручиваемая область предпросмотра" data-i18n-aria="previewViewport">
+    <section class="preview-container" id="preview-container" aria-labelledby="preview-title">
+      <h2 id="preview-title" class="sr-only">Предпросмотр</h2>
+      <div class="preview-viewport" role="region" tabindex="0" aria-label="Прокручиваемая область предпросмотра" data-i18n-aria="previewViewport">
         <iframe
           id="preview-frame"
           sandbox="allow-scripts allow-forms"
@@ -128,6 +130,7 @@
           loading="lazy"
         ></iframe>
       </div>
+    </section>
     </main>
     <footer class="app-footer">
       <span data-i18n="footer">Локальный инструмент для проверки адаптивной вёрстки.</span>
