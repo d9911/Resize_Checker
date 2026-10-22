@@ -12,8 +12,8 @@ Resize Checker показывает URL или переданный HTML в вы
 
 ## Подтверждённые возможности
 
-- Выбирает предустановленные ширины 320, 375, 425, 768, 1024 или 1440 пикселей либо вводит произвольную положительную ширину; поле произвольной ширины задаёт диапазон интерфейса 100–3000.
-- Принимает URL или HTML. URL назначается iframe предпросмотра, а переданный HTML — через `srcdoc`.
+- Выбирает предустановленные ширины 320, 375, 425, 768, 1024 или 1440 пикселей либо вводит произвольную целую ширину от 100 до 3000 пикселей.
+- Принимает HTTP(S) URL или HTML. При переключении между URL и HTML предыдущий источник iframe очищается.
 - Загружает содержимое кнопкой или Ctrl/Cmd+Enter в поле ввода.
 - Использует отложенно загружаемый iframe предпросмотра с sandbox-токенами `allow-scripts allow-forms`.
 - Переключает интерфейс между русским, английским и испанским и хранит выбранные язык и тему в браузерном `localStorage`.
@@ -27,18 +27,21 @@ Resize Checker показывает URL или переданный HTML в вы
 
 ## Локальная разработка и сборка
 
-`package.json` определяет следующие скрипты; README не заявляет об успешной установке или сборке:
+Используйте Node.js 22.13+ (ветка 22.x) или 24+ и npm. При использовании nvm выполните `nvm install` и `nvm use` в папке проекта.
 
 ```bash
+npm ci                    # установка версий из package-lock.json
+npm run check             # проверка TypeScript без генерации файлов
 npm run dev               # сервер разработки Vite (настроен на порт 3000)
-npm run build             # очистка, компиляция TypeScript и Sass
+npm run build             # проверка типов и production-сборка Vite
 npm run build:standalone  # production-сборка Vite
 npm run build:single      # сборка Vite, затем src/build-standalone.js
 npm run preview           # предпросмотр Vite
-npm run lint              # ESLint для src/**/*.ts
+npm test                  # регрессионные тесты автономной сборки
+npm run lint              # ESLint для кода приложения, скриптов и тестов
 ```
 
-В репозитории отслеживаются и `package-lock.json`, и `yarn.lock`, но в `package.json` нет поля `packageManager`. Lockfile неэквивалентны: package lock, например, фиксирует Vite `^6.3.5` и TypeScript `^5.1.3`, тогда как `package.json` объявляет Vite `^8.2.2` и TypeScript `^6.0.3`, а Yarn lock содержит записи для этих последних диапазонов. Выберите и согласуйте политику package manager/lockfile, прежде чем считать установку воспроизводимой; не смешивайте lockfile.
+Используйте npm и отслеживаемый `package-lock.json` как единственный lock-файл. TypeScript оставлен на 6.0: установленный typescript-eslint поддерживает версии ниже 6.1. `make build` и `make build-single` вызывают те же npm-скрипты. `npm run preview` обслуживает `dist/`; `npm run build:single` также обновляет корневой `index.html` со встроенными JavaScript и CSS.
 
 ## Структура
 
@@ -49,11 +52,11 @@ npm run lint              # ESLint для src/**/*.ts
 
 ## Технологии и runtime-зависимости
 
-Приложение использует браузерные HTML, CSS, JavaScript, iframe, `localStorage` и Web App Manifest API. Конфигурация проекта использует TypeScript, Sass, Vite, ESLint и Prettier; `package.json` также объявляет зависимость `fs` 0.0.2. В отслеживаемом исходном коде приложение не регистрирует service worker.
+Приложение использует браузерные HTML, CSS, JavaScript, iframe, `localStorage` и Web App Manifest API. Конфигурация проекта использует TypeScript, Sass, Vite, ESLint и Prettier. Runtime-зависимостей npm нет. В отслеживаемом исходном коде приложение не регистрирует service worker.
 
 ## Лицензия
 
-Для документации авторитетным источником является файл [LICENSE](LICENSE) репозитория: он содержит текст GPLv3 и дополнительные условия проекта. В `package.json` также указано поле лицензии `MIT`; README не интерпретирует и не согласует это противоречие.
+Для документации авторитетным источником является файл [LICENSE](LICENSE) репозитория: он содержит текст GPLv3 и дополнительные условия проекта.
 
 ## Автор
 

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 export default defineConfig({
   root: 'src',
@@ -7,14 +7,14 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: '../dist',
+    emptyOutDir: true,
     assetsInlineLimit: Infinity, // Встраиваем все ассеты
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         main: resolve('src/index.html'),
       },
       output: {
-        inlineDynamicImports: true,
-        manualChunks: undefined,
+        codeSplitting: false,
         entryFileNames: 'index.js',
         chunkFileNames: 'index.js',
         assetFileNames: 'index.css'

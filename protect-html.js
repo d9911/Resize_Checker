@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'node:fs';
 const path = process.argv[2];
 let html = fs.readFileSync(path, 'utf8');
 

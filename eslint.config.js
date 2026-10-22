@@ -5,6 +5,12 @@ import tsparser from '@typescript-eslint/parser';
 export default [
   js.configs.recommended,
   {
+    files: ['*.js', 'src/build-standalone.js', 'tests/*.js'],
+    languageOptions: {
+      globals: { console: 'readonly', process: 'readonly', URL: 'readonly', Buffer: 'readonly' },
+    },
+  },
+  {
     files: ['**/*.ts'],
     languageOptions: {
       parser: tsparser,
@@ -13,40 +19,14 @@ export default [
         sourceType: 'module',
         ecmaVersion: 2020,
       },
-      globals: {
-        // Browser globals
-        window: 'readonly',
-        document: 'readonly',
-        console: 'readonly',
-        setTimeout: 'readonly',
-        clearTimeout: 'readonly',
-        setInterval: 'readonly',
-        clearInterval: 'readonly',
-        fetch: 'readonly',
-        localStorage: 'readonly',
-        sessionStorage: 'readonly',
-        location: 'readonly',
-        history: 'readonly',
-        navigator: 'readonly',
-        screen: 'readonly',
-        // ES2020 globals
-        Promise: 'readonly',
-        Map: 'readonly',
-        Set: 'readonly',
-        WeakMap: 'readonly',
-        WeakSet: 'readonly',
-        Proxy: 'readonly',
-        Reflect: 'readonly',
-        Symbol: 'readonly',
-        BigInt: 'readonly',
-        BigInt64Array: 'readonly',
-        BigUint64Array: 'readonly',
-      },
+
     },
     plugins: {
       '@typescript-eslint': tseslint,
     },
     rules: {
+      'no-undef': 'off',
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',

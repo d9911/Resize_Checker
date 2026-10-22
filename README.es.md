@@ -12,8 +12,8 @@ Resize Checker previsualiza una URL o HTML proporcionado en anchos de viewport s
 
 ## Funciones verificadas
 
-- Selecciona anchos predefinidos de 320, 375, 425, 768, 1024 o 1440 píxeles, o introduce un ancho positivo personalizado; el campo personalizado expone 100–3000 como su rango de interfaz.
-- Pega una URL o HTML. Las URL se asignan al iframe de vista previa; el HTML proporcionado se asigna con `srcdoc`.
+- Selecciona anchos predefinidos de 320, 375, 425, 768, 1024 o 1440 píxeles, o introduce un ancho entero personalizado de 100 a 3000 píxeles.
+- Pega una URL HTTP(S) o HTML. Al cambiar entre URL y HTML, se elimina el origen anterior del iframe.
 - Carga contenido con el botón o con Ctrl/Cmd+Enter en el campo de entrada.
 - Usa un iframe de vista previa de carga diferida con los tokens de sandbox `allow-scripts allow-forms`.
 - Cambia la interfaz entre ruso, inglés y español, y guarda el idioma y tema seleccionados en `localStorage` del navegador.
@@ -27,18 +27,21 @@ Resize Checker previsualiza una URL o HTML proporcionado en anchos de viewport s
 
 ## Desarrollo local y compilación
 
-`package.json` define los siguientes scripts; aquí no se afirma que una instalación o compilación haya tenido éxito:
+Usa Node.js 22.13+ (22.x) o 24+, y npm. Con nvm, ejecuta `nvm install` y `nvm use` en el repositorio.
 
 ```bash
+npm ci                    # instala las versiones de package-lock.json
+npm run check             # comprueba TypeScript sin generar archivos
 npm run dev               # servidor de desarrollo Vite (configurado para el puerto 3000)
-npm run build             # limpieza, compilación TypeScript y compilación Sass
+npm run build             # comprobación de tipos y compilación Vite de producción
 npm run build:standalone  # compilación de producción con Vite
 npm run build:single      # compilación Vite y luego src/build-standalone.js
 npm run preview           # vista previa de Vite
-npm run lint              # ESLint para src/**/*.ts
+npm test                  # pruebas de regresión del HTML autónomo
+npm run lint              # ESLint para la app, scripts y pruebas
 ```
 
-El repositorio incluye `package-lock.json` y `yarn.lock`, pero `package.json` no tiene un campo `packageManager`. Los lockfiles no son equivalentes: el package lock registra, por ejemplo, Vite `^6.3.5` y TypeScript `^5.1.3`, mientras que `package.json` declara Vite `^8.2.2` y TypeScript `^6.0.3`, y el lock de Yarn tiene entradas para estos últimos rangos. Selecciona y reconcilia una política de package manager/lockfile antes de tratar una instalación como reproducible; no mezcles los lockfiles.
+Usa npm y el archivo versionado `package-lock.json` como único lockfile. TypeScript permanece en 6.0 porque el parser typescript-eslint instalado admite versiones inferiores a 6.1. `make build` y `make build-single` llaman a los mismos scripts npm. `npm run preview` sirve `dist/`; `npm run build:single` también actualiza el `index.html` raíz con JavaScript y CSS integrados.
 
 ## Estructura
 
@@ -49,11 +52,11 @@ El repositorio incluye `package-lock.json` y `yarn.lock`, pero `package.json` no
 
 ## Tecnologías y dependencias de ejecución
 
-La app usa HTML, CSS, JavaScript, iframe, `localStorage` y Web App Manifest del navegador. La configuración del proyecto usa TypeScript, Sass, Vite, ESLint y Prettier; `package.json` también declara `fs` 0.0.2 como dependencia. La aplicación no tiene un service worker registrado en el código fuente incluido.
+La app usa HTML, CSS, JavaScript, iframe, `localStorage` y Web App Manifest del navegador. La configuración del proyecto usa TypeScript, Sass, Vite, ESLint y Prettier. No hay dependencias npm de ejecución. La aplicación no tiene un service worker registrado en el código fuente incluido.
 
 ## Licencia
 
-Para la documentación, el archivo [LICENSE](LICENSE) del repositorio es la fuente autoritativa: contiene texto de GPLv3 y términos adicionales específicos del proyecto. `package.json` también contiene el campo de licencia `MIT`; este README no interpreta ni reconcilia ese conflicto.
+Para la documentación, el archivo [LICENSE](LICENSE) del repositorio es la fuente autoritativa: contiene texto de GPLv3 y términos adicionales específicos del proyecto.
 
 ## Autor
 

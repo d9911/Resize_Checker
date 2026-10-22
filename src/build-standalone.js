@@ -1,25 +1,22 @@
-/* eslint-disable no-undef */
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const dist = new URL('../dist/', import.meta.url);
+const html = fs.readFileSync(new URL('index.html', dist), 'utf8');
+const css = fs.readFileSync(new URL('index.css', dist), 'utf8');
+const js = fs.readFileSync(new URL('index.js', dist), 'utf8');
+const script = /<script\b[^>]*\bsrc="\/?index\.js"[^>]*><\/script>/;
+const stylesheet = /<link\b[^>]*\bhref="\/?index\.css"[^>]*>/;
 
-// Читаем файлы
-const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-const css = fs.readFileSync(path.join(__dirname, '../dist/index.css'), 'utf8');
-const js = fs.readFileSync(path.join(__dirname, '../dist/index.js'), 'utf8');
+if (!script.test(html) || !stylesheet.test(html)) {
+  throw new Error('Expected Vite entry assets index.js and index.css were not found.');
+}
 
-// Создаем standalone HTML
+// Function replacements preserve literal dollar signs in bundled code and CSS.
 const standaloneHTML = html
-  .replace('</head>', `<style>${css}</style></head>`)
-  .replace(/<script\s+type="module"\s+src="(?:\/src\/)?main\.ts"><\/script>/, `<script>${js}</script>`)
+  .replace(script, () => `<script type="module">${js.replace(/<\/script/gi, '<\\/script')}</script>`)
+  .replace(stylesheet, () => `<style>${css.replace(/<\/style/gi, '<\\/style')}</style>`)
   .replaceAll('href="/icons/', 'href="public/icons/')
   .replace('href="/manifest.webmanifest"', 'href="public/manifest.webmanifest"');
 
-// Сохраняем результат
-fs.writeFileSync(path.join(__dirname, '../index.html'), standaloneHTML);
-
-console.log('✅ Standalone HTML файл создан: index.html');
-console.log(`📦 Размер: ${(standaloneHTML.length / 1024).toFixed(2)} KB`);
+fs.writeFileSync(new URL('../index.html', import.meta.url), standaloneHTML);
+console.log(`Standalone index.html: ${(Buffer.byteLength(standaloneHTML) / 1024).toFixed(2)} KiB`);

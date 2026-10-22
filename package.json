@@ -2,13 +2,29 @@
   "name": "resize-checker",
   "version": "1.0.0",
   "description": "Responsive design testing tool",
-  "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d9911/Resize_Checker.git"
+  },
+  "author": {
+    "name": "Denis Gutsuliak (d9911.org)",
+    "email": "admin@d9911.org",
+    "url": "https://t.me/d9911/"
+  },
+  "contributors": [
+    {
+      "name": "Denis Gutsuliak",
+      "email": "admin@d9911.org",
+      "url": "https://t.me/d9911/"
+    }
+  ],
+  "license": "GPL-3.0-only-or-later",
   "scripts": {
     "build:ts": "tsc",
     "build:scss": "sass src/styles.scss dist/styles.css --style=compressed",
-    "build": "npm run clean && npm run build:ts && npm run build:scss",
-    "build:standalone": "vite build",
+    "build": "npm run check && vite build",
+    "build:standalone": "npm run build",
     "build:single": "npm run build:standalone && node src/build-standalone.js",
     "preview": "vite preview",
     "watch:ts": "tsc --watch",
@@ -16,25 +32,27 @@
     "watch": "npm-run-all --parallel watch:ts watch:scss",
     "clean": "rm -rf dist",
     "dev": "vite",
-    "serve": "npx http-server . -p 3000 -o",
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix",
-    "format": "prettier --write src/**/*.{ts,scss,html}"
+    "serve": "vite preview --port 3000",
+    "lint": "eslint src tests *.js",
+    "lint:fix": "eslint src tests *.js --fix",
+    "format": "prettier --write src/**/*.{ts,scss,html}",
+    "check": "tsc --noEmit",
+    "test": "node --test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.68.0",
-    "@typescript-eslint/parser": "^8.68.0",
-    "eslint": "^10.9.1",
-    "http-server": "^14.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.72.0",
+    "@typescript-eslint/parser": "^8.72.0",
+    "eslint": "^10.13.0",
     "npm-run-all": "^4.1.5",
-    "path": "^0.12.7",
-    "prettier": "^3.0.0",
-    "sass": "^1.70.0",
+    "prettier": "^3.9.10",
+    "sass": "^1.106.1",
     "typescript": "^6.0.3",
-    "vite": "^8.2.2"
+    "vite": "^8.3.5"
   },
-  "dependencies": {
-    "fs": "0.0.2"
+  "private": true,
+  "packageManager": "npm@10.9.8",
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
   }
 }

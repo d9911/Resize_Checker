@@ -12,8 +12,8 @@ Resize Checker previews a URL or supplied HTML at selected viewport widths for r
 
 ## Verified capabilities
 
-- Select preset widths of 320, 375, 425, 768, 1024, or 1440 pixels, or enter a custom positive width; the custom input exposes 100–3000 as its UI range.
-- Paste a URL or HTML. URLs are assigned to the preview iframe; supplied HTML is assigned with `srcdoc`.
+- Select preset widths of 320, 375, 425, 768, 1024, or 1440 pixels, or enter a custom integer width from 100 to 3000 pixels.
+- Paste an HTTP(S) URL or HTML. Switching between URLs and HTML clears the previous iframe source.
 - Load content with the button or with Ctrl/Cmd+Enter in the input.
 - Use a lazy-loaded preview iframe with `allow-scripts allow-forms` sandbox tokens.
 - Switch the interface between Russian, English, and Spanish, and save the selected language and theme in browser `localStorage`.
@@ -27,18 +27,21 @@ Resize Checker previews a URL or supplied HTML at selected viewport widths for r
 
 ## Local development and build
 
-`package.json` defines the following scripts; no successful installation or build is asserted here:
+Use Node.js 22.13+ (22.x) or 24+, and npm. With nvm, run `nvm install` and `nvm use` in the repository.
 
 ```bash
+npm ci                    # install the versions in package-lock.json
+npm run check             # TypeScript without emitting files
 npm run dev               # Vite development server (configured for port 3000)
-npm run build             # clean, TypeScript compilation, and Sass compilation
+npm run build             # type-check and Vite production build
 npm run build:standalone  # Vite production build
 npm run build:single      # Vite build, then src/build-standalone.js
 npm run preview           # Vite preview
-npm run lint              # ESLint for src/**/*.ts
+npm test                  # regression tests for standalone output
+npm run lint              # ESLint for application code, scripts and tests
 ```
 
-The repository tracks both `package-lock.json` and `yarn.lock`, but `package.json` has no `packageManager` field. The lockfiles are not equivalent: the package lock records, for example, Vite `^6.3.5` and TypeScript `^5.1.3`, while `package.json` declares Vite `^8.2.2` and TypeScript `^6.0.3`, and the Yarn lock has entries for the latter ranges. Select and reconcile a package-manager/lockfile policy before treating an install as reproducible; do not mix the lockfiles.
+Use npm and the tracked `package-lock.json` as the single lockfile. TypeScript remains on 6.0 because the installed typescript-eslint parser supports versions below 6.1. `make build` and `make build-single` call the same npm scripts. `npm run preview` serves `dist/`; `npm run build:single` also refreshes the root `index.html` with embedded JavaScript and CSS.
 
 ## Structure
 
@@ -49,11 +52,11 @@ The repository tracks both `package-lock.json` and `yarn.lock`, but `package.jso
 
 ## Technologies and runtime dependencies
 
-The app uses browser HTML, CSS, JavaScript, iframe, `localStorage`, and Web App Manifest APIs. The project configuration uses TypeScript, Sass, Vite, ESLint, and Prettier; `package.json` also declares `fs` 0.0.2 as a dependency. The application has no registered service worker in the tracked source.
+The app uses browser HTML, CSS, JavaScript, iframe, `localStorage`, and Web App Manifest APIs. The project configuration uses TypeScript, Sass, Vite, ESLint, and Prettier. There are no npm runtime dependencies. The application has no registered service worker in the tracked source.
 
 ## License
 
-For documentation, the repository [LICENSE](LICENSE) file is authoritative: it contains GPLv3 text and additional project-specific terms. `package.json` also contains a `MIT` license field; this README does not interpret or reconcile that conflict.
+For documentation, the repository [LICENSE](LICENSE) file is authoritative: it contains GPLv3 text and additional project-specific terms.
 
 ## Author
 

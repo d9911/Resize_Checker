@@ -39,7 +39,8 @@ body {
   accent-color: var(--ui-accent);
 }
 
-.container { display: grid; gap: 1.25rem; }
+.container { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.container > *, .control-panel .field { min-width: 0; }
 
 .app-header,
 .control-panel,
